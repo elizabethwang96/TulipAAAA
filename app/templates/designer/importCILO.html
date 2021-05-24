@@ -1,0 +1,51 @@
+
+{% extends 'designer/home.html' %}
+ {% block initial %}
+
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.0/css/bootstrap.min.css" rel="stylesheet">
+     <link type="text/css" rel="stylesheet" href="/static/css/fileinput.min.css" />
+{#     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.9.0/css/bootstrap.min.css" rel="stylesheet">#}
+
+ {% endblock %}
+{% block header %}
+  <h1>{% block title %}Import CILO{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {#<input id="f_upload" type="file" class="file" />#}
+
+
+    <form action="" enctype='multipart/form-data' method='POST' class="form-horizontal required-validate" >
+        <div class="container">
+            <div class="row">
+                <div class="form-group col-10">
+{#		            <label>项目封面</label>#}
+			        <input type="file" class="file" name="file" value = "empty" id = "file"/>
+			        <p class="help-block">Only csv format</p>
+                </div>
+		    </div>
+
+	        <div class="row">
+		        <div class="col-md-10 col-md-offset-1">
+			        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                    <a href="\designer\createCourse"><button type="button" class="btn btn-primary btn-lg">Back</button></a>
+		        </div>
+	        </div>
+        </div>
+</form>
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/fileinput.min.js"></script>
+{% endblock %}
+
+<main class="content">
+    <form action="" enctype='multipart/form-data' method='POST'>
+      <input type="file" name="file" value = "empty" id = "file">
+
+      <input type="submit" />
+
+    </form>
+</main>

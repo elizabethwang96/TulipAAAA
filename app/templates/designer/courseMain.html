@@ -1,0 +1,101 @@
+{% extends 'designer/home.html' %}
+{% block header %}
+    <h1>{% block title %}Course Main Page for designer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="Cards">
+        <form method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-xl-8">
+                        <form>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">Course name:</h4>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="Course name" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">Course code:</h4>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="Course code" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">Opening academic year:</h4>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="Opening academic year" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">Programme:</h4>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="Programme" disabled>
+                                </div>
+                            </div>
+                            <fieldset class="mb-3">
+                                <div class="row">
+                                    <h4 class="col-sm-4 text-sm-right">Type:</h4>
+                                    <div class="col-sm-8">
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input" checked>
+                                            <span class="form-check-label">Major required</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label">Major election</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label">GE</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label">FE</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">CILO:</h4>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" placeholder="Textarea" rows="3" disabled></textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <h4 class="col-sm-4 text-sm-right">Assessment:</h4>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" placeholder="Textarea" rows="3" disabled></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 col-xl-4">
+                        <div class="mt-7 row">
+                            <a href="\designer\analysis">
+                                <button type="button" class="btn btn-outline-primary mb-2 btn-lg">
+                                    <i class="fas fa-check"></i> analysis
+                                </button>
+                            </a>
+                            </br></br></br></br></br></br>
+                            <a href="\designer\visualization">
+                                <button type="button" class="btn btn-outline-info btn-lg">
+                                    <i class="fas fa-info"></i> Visualization
+                                </button>
+                            </a>
+                        </div>
+                        <div class="mt-7 row">
+                            </br></br>
+                            <a href="\designer\searchCourse">
+                                <button type="button" class="btn btn-outline-danger mb-2 btn-lg">
+                                    <i class="fas fa-globe-americas"></i> Back
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

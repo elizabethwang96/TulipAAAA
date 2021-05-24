@@ -1,0 +1,21 @@
+{% extends 'student/home.html' %}
+
+
+{% block search %}
+    <div class="input-group input-group-navbar"><!--搜索CILO-->
+        <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+        <button class="btn" type="button">
+            <i class="align-middle" data-feather="search"></i>
+        </button>
+    </div>
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}Search CILO{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label>Welcome back! student</label>
+{#    <label for="password">Password</label>#}
+  </form>
+{% endblock %}

@@ -1,0 +1,532 @@
+{% extends 'designer/home.html' %}
+{% block header %}
+<h1>{% block title %}Create a course{% endblock %}</h1></br>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Basic Info</h5>
+                        <h6 class="card-subtitle text-muted">Create CILOs</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3 row">
+                            <h4 class="col-sm-4 text-sm-right">Course name:</h4>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="courseName" name="courseName" placeholder="Course name">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <h4 class="col-sm-4 text-sm-right">Course code:</h4>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="code" name="code" placeholder="Course code">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <h4 class="col-sm-4 text-sm-right">Opening academic year:</h4>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="academicYear" name="academicYear"
+                                    placeholder="Opening academic year">
+                            </div>
+                        </div>
+
+
+
+{#                        <fieldset class="mb-3">#}
+{#                            <div class="row">#}
+{#                                <h4 class="col-sm-4 text-sm-right">Programme:</h4>#}
+{#                                <div class="col-sm-8">#}
+{#                                    <select class="form-control mb-3" id="select_programme" name='programmes'>#}
+{#                                        {% for item in programmes %}#}
+{#                                            <option id="programmes" name="programmes" value="{{ item.programme_id }}" type="radio"> {{ item.programmeName }} </option><br>#}
+{#                                        {% endfor %}#}
+{#                                        <option value="MJ" selected>Major required</option>#}
+{#                                        <option value="ME">Major election</option>#}
+{#                                        <option value="GE">GE</option>#}
+{#                                        <option value="FE">FE</option>#}
+{#                                    </select>#}
+{##}
+{##}
+{#                                    <!-- <label class="form-check">#}
+{#                                            <input name="radio-3" type="radio" class="form-check-input" checked>#}
+{#                                            <span class="form-check-label" name="type" value = "MJ">Major required</span>#}
+{#                                        </label>#}
+{#                                        <label class="form-check">#}
+{#                                            <input name="radio-3" type="radio" class="form-check-input">#}
+{#                                            <span class="form-check-label" name="type" value = "ME">Major election</span>#}
+{#                                        </label>#}
+{#                                        <label class="form-check">#}
+{#                                            <input name="radio-3" type="radio" class="form-check-input">#}
+{#                                            <span class="form-check-label" name="type" value="GE">GE</span>#}
+{#                                        </label>#}
+{#                                        <label class="form-check">#}
+{#                                            <input name="radio-3" type="radio" class="form-check-input">#}
+{#                                            <span class="form-check-label" name="type" value = "FE">FE</span>#}
+{#                                        </label> -->#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </fieldset>#}
+
+{#                        <div class="mb-3 row">#}
+{#                            <h4 class="col-sm-4 text-sm-right">Programme:</h4>#}
+{#                            <div class="col-sm-8" id="select_programme">#}
+{#                                {% for item in programmes %}#}
+{#                                    <input id="programmes" name="programmes" value="{{ item.programme_id }}" type="radio"> {{ item.programmeName }} <br>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+{#                            <div class="col-sm-8">#}
+{#                                <input class="form-control" id="programme" name="programme" placeholder="Programme">#}
+{#                            </div>#}
+{#                        </div>#}
+
+                        <fieldset class="mb-3">
+                            <div class="row">
+                                <h4 class="col-sm-4 text-sm-right">Programme:</h4>
+                                <div class="col-sm-8">
+                                    <select class="form-control mb-3" name='programmes'>
+                                        {% for item in programmes %}
+                                            <option id="programmes" value="{{ item.programme_id }}" selected>{{ item.programmeName }} </option>
+
+                                        {% endfor %}
+
+                                    </select>
+
+
+
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-3">
+                            <div class="row">
+                                <h4 class="col-sm-4 text-sm-right">Type:</h4>
+                                <div class="col-sm-8">
+                                    <select class="form-control mb-3" name='type'>
+                                        <option value="MJ" selected>Major required</option>
+                                        <option value="ME">Major election</option>
+                                        <option value="GE">GE</option>
+                                        <option value="FE">FE</option>
+                                    </select>
+
+
+                                    <!-- <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input" checked>
+                                            <span class="form-check-label" name="type" value = "MJ">Major required</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label" name="type" value = "ME">Major election</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label" name="type" value="GE">GE</span>
+                                        </label>
+                                        <label class="form-check">
+                                            <input name="radio-3" type="radio" class="form-check-input">
+                                            <span class="form-check-label" name="type" value = "FE">FE</span>
+                                        </label> -->
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!--Card body-->
+                </div>
+                <!--Card-->
+                <div class="card">
+
+                    <div class="mb-3 row">
+                        <!-- CILO -->
+                        <div>
+                            <div class="card-header">
+                                <h5 class="card-title">CILOs</h5>
+                                <h6 class="card-subtitle text-muted">Create CILOs</h6>
+                            </div>
+
+
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h6> CILOs 1</h6>
+                                        <div class="mb-3 row">
+                                            <label>Content</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="CILO1"
+                                                          name="CILO1" placeholder="Textarea" rows="3"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <h6> CILOs 2</h6>
+                                        <div class="mb-3 row">
+                                            <label>Content</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="CILO2"
+                                                          name="CILO2" placeholder="Textarea" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div id="CILO3div">
+                                            <h6> CILOs 3</h6>
+                                                <div class="mb-3 row">
+                                                    <label>Content</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control" id="CILO3"
+                                                                  name="CILO3" placeholder="Textarea" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </ul>
+{#                                    {% for i in range(1,CILOsNum+1)%}#}
+{#                                    <li class="list-group-item">#}
+{#                                        <h6> CILOs {{i}}</h6>#}
+{#                                        <div class="mb-3 row">#}
+{#                                            <label>Content</label>#}
+{#                                            <div class="col-sm-10">#}
+{#                                                <textarea class="form-control" id="CILO{{i}}"#}
+{#                                                    name="CILO{{i}}" placeholder="Textarea" rows="3"></textarea>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{##}
+{#                                    {%endfor%}#}
+
+                                    <div style="margin-left:20px;">
+
+                                    <button id="addCILOs" class="btn btn-primary" name="addCILOs" type="button"
+                                           value="ADD CILO">ADD CILO</button>
+                                    <button id="delCILOs" class="btn btn-danger" name="delCILOs" type="button"
+                                           value="DELETE CILO">DELETE CILO</button>
+
+                                    </div>
+                                    <hr>
+
+                                    {% if course!=[] %}
+
+
+                                                <div class="row">
+                                                    <p class="col-sm-4 text-sm-right">Do you want to add a prerequisite cilos for cilo_1?</p>
+                                                    <div class="col-sm-8" id="precilo1_status">
+                                                        <input id="add_precilo1_status"name="add_precilo1_status" value="1" type="radio" checked> No <br>
+                                                        <input id="add_precilo1_status" name="add_precilo1_status" value="2" type="radio"> Yes
+                                                    </div>
+
+                                                </div>
+
+
+                                                    <div class="row" id="haha">
+                                                        <div class="mb-3"><hr></div>
+                                                        <fieldset class="mb-3">
+                                                            <div class="row">
+                                                                <p class="col-sm-4 text-sm-right">Course:</p>
+                                                                <div class="col-sm-8">
+                                                                    <select class="form-control mb-3" onchange="getSelectValue(this.value)">
+                                                                        {% for item in courses %}
+                                                                            <option id="courses"  name='courses' value="{{ item.course_id }}" selected>{{ item.courseName }} </option>
+
+                                                                        {% endfor %}
+
+                                                                    </select>
+
+
+
+                                                                 </div>
+                                                            </div>
+                                                        </fieldset>
+                                                        <div id="cilos_sum" style="display:None;">{{ cilos_sum }}</div>
+
+                                                        {#                                                        <div class="col-sm-8">#}
+{#                                                            {% for item in courses %}#}
+{#                                                                <input id="courses" name="courses" value="{{ item.course_id }}" type="radio"> {{ item.courseName }} <br>#}
+{#                                                            {% endfor %}#}
+{#                                                            <div id="cilos_sum" style="display:None;">{{ cilos_sum }}</div>#}
+{#                                                            <input type="submit" value="Go!">#}
+{#                                                        </div>#}
+                                                        <div class="mb-3"><hr></div>
+                                                    </div>
+
+
+                                                        <div class="row" id="cilo_haha">
+                                                            <p class="col-sm-4 text-sm-right">Select the prerequisite CILO you want:</p>
+                                                            <div class="col-sm-8">
+                                                                {% for course in courses %}
+                                                                    {% for item in course.cilo %}
+
+                                                                            <div  class="{{ item.course_id }}cilo" style="display: None">
+
+                                                                            <input id="pre_cilos" name="pre_cilos" value="{{ item.cilo_id }}" type="checkbox">
+                                                                            {{ item.ciloContent }} <br>
+
+                                                                        </div>
+
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+
+
+                                    {% endif %}
+
+
+
+
+{##}
+{#                                    <div class="mb-3 row">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Do you want to add a prerequisite cilos for cilo_2?</h4>#}
+{#                                        <div class="col-sm-8" id="precilo2_status">#}
+{#                                            <input name="sb" value="1" type="radio" checked> No <br>#}
+{#                                            <input name="sb" value="2" type="radio"> Yes#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <br>#}
+{##}
+{#                                    <div class="mb-3 row" id="haha">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Select the prerequisite course you want:</h4>#}
+{#                                        <div class="col-sm-8">#}
+{#                                            {% for item in courses %}#}
+{#                                                <input id="courses" name="courses" value="{{ item.course_id }}" type="radio"> {{ item.courseName }} <br>#}
+{#                                            {% endfor %}#}
+{#                                            <div id="course_sum" style="display:None;">{{ course_sum }}</div>#}
+                                            {#                                                <input type="submit" value="Go!">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                    <div class="mb-3 row" id="cilo_haha">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Select the prerequisite CILO you want:</h4>#}
+{#                                        <div class="col-sm-8">#}
+{#                                            {% for course in courses %}#}
+{#                                                {% for item in course.cilo %}#}
+{##}
+{#                                                    <div  class="{{ item.course_id }}cilo" style="display: None">#}
+{##}
+{#                                                        <input id="pre_cilos" name="pre_cilos" value="{{ item.cilo_id }}" type="checkbox">#}
+{#                                                        {{ item.ciloContent }} <br>#}
+{##}
+{#                                                    </div>#}
+{##}
+{#                                                {% endfor %}#}
+{#                                            {% endfor %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                                    <div class="mb-3 row">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Do you want to add a prerequisite cilos for cilo_3?</h4>#}
+{#                                        <div class="col-sm-8" id="precilo3_status">#}
+{#                                            <input name="sb" value="1" type="radio" checked> No <br>#}
+{#                                            <input name="sb" value="2" type="radio"> Yes#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <br>#}
+{##}
+{#                                    <div class="mb-3 row" id="haha">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Select the prerequisite course you want:</h4>#}
+{#                                        <div class="col-sm-8">#}
+{#                                            {% for item in courses %}#}
+{#                                                <input id="courses" name="courses" value="{{ item.course_id }}" type="radio"> {{ item.courseName }} <br>#}
+{#                                            {% endfor %}#}
+{#                                            <div id="course_sum" style="display:None;">{{ course_sum }}</div>#}
+                                            {#                                                <input type="submit" value="Go!">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                    <div class="mb-3 row" id="cilo_haha">#}
+{#                                        <h4 class="col-sm-4 text-sm-right">Select the prerequisite CILO you want:</h4>#}
+{#                                        <div class="col-sm-8">#}
+{#                                            {% for course in courses %}#}
+{#                                                {% for item in course.cilo %}#}
+{##}
+{#                                                    <div  class="{{ item.course_id }}cilo" style="display: None">#}
+{##}
+{#                                                        <input id="pre_cilos" name="pre_cilos" value="{{ item.cilo_id }}" type="checkbox">#}
+{#                                                        {{ item.ciloContent }} <br>#}
+{##}
+{#                                                    </div>#}
+{##}
+{#                                                {% endfor %}#}
+{#                                            {% endfor %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{##}
+
+
+
+
+
+                            </div>
+                        </div>
+                        <!-- CILO -->
+                       
+                    </div>
+                </div>
+                <!--Card-->
+
+                <div class="card">
+
+                    <div class="card-body md-3">
+{#    =========================================================================================================#}
+                        <h6>Assessment:</h6>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Title:</p>
+                                <input class="form-control" placeholder="Textarea">
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                <p>Percentage:</p>
+                                <input class="form-control" placeholder="Textarea">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <p>Assessment CILO selection:</p>
+                                <select class="form-control" onchange="">
+                                        <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>
+                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+
+                                </select>
+                            </div>
+
+                            <hr style="margin-top: 20px;">
+
+                        </div>
+                        {#    =========for loop for adding================================================================================================#}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <select class="form-control" onchange="">
+                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+
+                                </select>
+                            </div>
+
+                            <hr style="margin-top: 20px;">
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <select class="form-control" onchange="">
+                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+
+                                </select>
+                            </div>
+
+                            <hr style="margin-top: 20px;">
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input class="form-control" placeholder="Textarea">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <select class="form-control" onchange="">
+                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>
+
+                                </select>
+                            </div>
+
+                            <hr style="margin-top: 20px;">
+
+                        </div>
+                        {#    =========for loop for adding================================================================================================#}
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button id="" class="btn btn-primary" name="" type="button"
+                                        value="ADD sb tzm">Add Assessment</button>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <button id="" class="btn btn-danger" name="" type="button"
+                                        value="DELETE sb tzm">Delete Assessment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Card Assessment-->
+                {# 使用遍历获取闪现的消息 #}
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="alert-message">
+                        <strong>{{message}}</strong>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="mb-3 row">
+                    <div class="col-sm-10 ml-sm-auto">
+                        <input id="submit" class="btn btn-primary" name="submit" type="submit" value="submit">
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4">
+                    <div class="mt-7 row">
+                        <a href="\designer\editCILO">
+                            <button type="button" class="btn btn-primary mb-2">Edit CILO</button>
+                        </a>
+                        </br></br></br></br>
+                        <a href="\designer\openCILO">
+                            <button type="button" class="btn btn-primary mb-2">Import CILO</button>
+                        </a>
+                    </div>
+                    <div class="mt-7 row">
+                        <a href="\designer\editAssess">
+                            <button type="button" class="btn btn-primary mb-2">Edit Assessment</button>
+                        </a>
+                        </br></br></br></br>
+                        <a href="\designer\openAssess">
+                            <button type="button" class="btn btn-primary mb-2">ImportAssessment</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+{% endblock %}

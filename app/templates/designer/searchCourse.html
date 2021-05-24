@@ -1,0 +1,61 @@
+{% extends 'designer/home.html' %}
+{% block search %}
+    <div class="input-group input-group-navbar"><!--搜索课-->
+        <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+        <button class="btn" type="button">
+            <i class="align-middle" data-feather="search"></i>
+        </button>
+    </div>
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}Search course{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Search CILO</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <p>Key word</p>
+          <input type="text" class="form-control" id="keyword" name="keyword">
+        </div>
+
+        <div class="mb-3 col-md-2">
+          <p>Search By</p>
+          <select class="form-control mb-3" name='searchBy'>
+            <option value="Code" selected>Course Code</option>
+            <option value="name">Course Name</option>
+          </select>
+        </div>
+        <div class="mb-3 col-md-2">
+          <p>Course Type</p>
+          <select class="form-control mb-3" name='courseType'>
+            <option value="pre" selected>前置课</option>
+            <option value="current">Current course</option>
+            <option value="after">后置课</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3 col-md-2">
+        <input id="delCILOs" class="btn btn-primary" name="searchCILO" type="submit" value="Search">
+      </div>
+    </div>
+  </div>
+</form>
+
+{# 使用遍历获取闪现的消息 #}
+{% for message in get_flashed_messages() %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="alert-message">
+        <strong>{{message}}</strong>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

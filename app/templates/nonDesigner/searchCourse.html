@@ -1,0 +1,19 @@
+{% extends 'nonDesigner/home.html' %}
+{% block search %}
+    <div class="input-group input-group-navbar"><!--搜索课-->
+        <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+        <button class="btn" type="button">
+            <i class="align-middle" data-feather="search"></i>
+        </button>
+    </div>
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}Search course{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label>Welcome back! Non-Course designer</label>
+{#    <label for="password">Password</label>#}
+  </form>
+{% endblock %}

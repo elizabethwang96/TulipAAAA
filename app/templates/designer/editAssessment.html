@@ -1,0 +1,35 @@
+{% extends 'designer/home.html' %}
+{% block initial %}
+
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.0/css/bootstrap.min.css" rel="stylesheet">
+ {% endblock %}
+{% block header %}
+  <h1>{% block title %}Edit Assessment{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label>Welcome back! Course designer</label>
+    <table class="table table-bordered table-hover">
+	<tr class="info">
+		<td>Evaluation Method</td>
+		<td>Percentage</td>
+		<td>CILOs</td>
+	</tr>
+	<tr>
+		<td colspan="3" class="danger"><button class="btn btn-primary btn-sm">ADD</button></td>
+	</tr>
+    </table>
+  </form>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <a href="\designer\createCourse"><button type="button" class="btn btn-primary btn-lg">Back</button></a>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/table.js"></script>
+{% endblock %}
