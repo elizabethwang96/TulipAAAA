@@ -93,6 +93,43 @@ def createCourse():
     return render_template('designer/createCourse.html', title='create course', header='create course', courses=courses, programmes=programmes, cilos_sum=cilos_sum)
 
 
+@designerBP.route('/createAssess', methods=['GET', 'POST'])
+def createAssess():
+    sum_percent = 0
+    method_List = {}
+    if request.method == 'POST':
+        data = request.get_json()
+        if 0 < len(data):
+            for i in range(len(data)):
+                if not data[i]['method'] or not data[i]['cilo'] or not data[i]['percent'] or data[i]['cilo'].isdigit() is False or data[i]['percent'].isdigit() is False:
+                    flash("Please input valid information")
+                    return render_template('designer/editAssessment.html', title='edit assessment',
+                                           header='edit assessment')
+                elif int(data[i]['cilo']) < 1 or int(data[i]['cilo']) > CILO.query.order_by(CILO.course_id.desc()).first().ciloNumber:
+                    # .filter_by(course_id=str(session.get('courseID')))
+                    flash("Please input valid CILO number")
+                elif int(data[i]['percent']) <= 0 or int(data[i]['percent']) > 100:
+                    flash("Please input valid Percentage")
+                elif data[i]['method'] not in method_List:
+                    sum_percent += int(data[i]['percent'])
+                    method_List.update()
+            if sum_percent != 100:
+                print("The sum of the percentage should be 100%")
+                flash("The sum of the percentage should be 100%")
+            else:
+                for i in range(len(data)):
+                    db.session.add(Assessment(data[i]['method']))
+                    assessment_id = Assessment.query.filter_by(type=data[i]['method']).first().assessment_id
+                    cilo_id = CILO.query.filter(
+                        and_(course_id=session.get('courseID'), ciloNumber=data[i]['cilo'])).first().cilo_id
+                    db.session.add(Assessment_CILO(str(assessment_id), str(cilo_id), str(data[i]['percent'])))
+                db.session.commit()
+                print(data)
+
+        return render_template('designer/editAssessment.html', title='edit assessment', header='edit assessment')
+    return render_template('designer/editAssessment.html', title='edit assessment', header='edit assessment')
+
+
 @designerBP.route('/department',methods=['GET','POST'])
 def department():
     if request.method == 'GET':
