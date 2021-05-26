@@ -32,60 +32,6 @@ class Course_preCourse(Base):
         return '<Course_preCourse %r %r>' % self.course_id
 
 
-    def searchPreCoursesByCode(keyword):
-        listOfPreCourses = []
-        courseObject = Course.searchcurCoursebyCode(keyword)
-        if courseObject:
-            coursePreCourseObjects = Course_preCourse.query.filter(courseObject.course_id == Course_preCourse.course_id).all()
-            for i in coursePreCourseObjects:
-                preCourse = Course.query.filter(i.preCourse_id == Course.course_id).first()
-                listOfPreCourses.append(preCourse)
-            if listOfPreCourses:
-                pass
-            else:
-                print('no pre courses exists')
-        return listOfPreCourses
-
-    def searchPreCoursesByName(keyword):
-        listOfPreCourses = []
-        courseObject = Course.query.filter(Course.courseName == keyword).first()
-        if courseObject:
-            coursePreCourseObjects = Course_preCourse.query.filter(courseObject.course_id == Course_preCourse.course_id).all()
-            for i in coursePreCourseObjects:
-                preCourse = Course.query.filter(i.preCourse_id == Course.course_id).first()
-                listOfPreCourses.append(preCourse)
-            if listOfPreCourses:
-                pass
-            else:
-                print('no pre courses exists')
-        return listOfPreCourses
-
-    def searchAftCoursesByCode(keyword):
-        listOfAftCourses = []
-        courseObject = Course.searchcurCoursebyCode(keyword)
-        if courseObject:
-            courseAftCourseObjects = Course_preCourse.query.filter(courseObject.course_id == Course_preCourse.preCourse_id).all()
-            for i in courseAftCourseObjects:
-                aftCourse = Course.query.filter(i.course_id == Course.course_id).first()
-                listOfAftCourses.append(aftCourse)
-            if listOfAftCourses:
-                pass
-            else:
-                print('no aft courses exists')
-        return listOfAftCourses
-
-    def searchAftCoursesByName(keyword):
-        listOfAftCourses = []
-        courseObject = Course.query.filter(Course.courseName == keyword).first()
-        courseAftCourseObjects = Course_preCourse.query.filter(courseObject.course_id == Course_preCourse.preCourse_id).all()
-        for i in courseAftCourseObjects:
-            aftCourse = Course.query.filter(i.course_id == Course.course_id).first()
-            listOfAftCourses.append(aftCourse)
-        if listOfAftCourses:
-            pass
-        else:
-            print('no aft courses exists')
-        return listOfAftCourses
 
     def jsonstr(self):
         jsondata = {
@@ -158,25 +104,6 @@ class Course(Base):
         lastCourseID = lastCourse.course_id
         print("lastcourseid"+str(lastCourseID))
         return lastCourseID
-    
-    def searchcurCoursebyCode(keyword):
-        CourseObject = Course.query.filter(Course.courseCode == keyword).first()
-        if CourseObject:
-            pass 
-        else:
-            print('there is no corresponding course')
-        return CourseObject
-    
-    def searchcurCoursebyName(keyword):
-        CourseObjects = Course.query.filter(Course.courseName == keyword).all()
-        listOfCourses = []
-        for i in CourseObjects:
-                listOfCourses.append(i)
-        if listOfCourses:
-            pass    
-        else:
-            print('there is no corresponding course')
-        return listOfCourses 
 
     def jsonstr(self):
 

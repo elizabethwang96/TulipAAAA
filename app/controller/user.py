@@ -26,6 +26,9 @@ userBP = Blueprint('/',__name__)
 
 @userBP.route('/',methods=['GET','POST'])
 def login():
+
+     # result = Course.query.filter_by(courseCode=7788).first()
+     # print(result.courseName)
      # assessment1 = Assessment('quiz', 1)
      # assessment2 = Assessment('project', 1)
      # db.session.add(assessment1)
@@ -100,15 +103,15 @@ def login():
      #
      # print("FUCKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
      #
-     #
-     # # print(Course.query.first())
-     # # print(course.pre_course)
+
+     # print(Course.query.first())
+     # print(course.pre_course)
      # for item in course.pre_course:
      #      print(item.preCourse_id)
-     #
-     # # precourses = Course_preCourse.query.filter_by(course_id=course.course_id).first().pre_course
-     # # print(precourses)
-     #
+
+     # precourses = Course_preCourse.query.filter_by(course_id=course.course_id).first().pre_course
+     # print(precourses)
+
      # print("FUCKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
      #
      # print(CILO.query.filter_by(course_id=course.course_id).all())

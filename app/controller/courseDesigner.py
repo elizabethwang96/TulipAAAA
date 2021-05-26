@@ -1,3 +1,4 @@
+from datashape import Null
 from sqlalchemy.sql.expression import null
 from wtforms import RadioField
 from wtforms.validators import DataRequired
@@ -202,43 +203,63 @@ def editAssess():
 
 @designerBP.route('/searchCourse',methods=['GET','POST'])
 def searchCourse():
-    search_Form = Search_course()
-    keyword = search_Form.keyword.data
-    searchBy = search_Form.searchBy.data
-    courseType = search_Form.courseType.data
-    if  not keyword:
-        flash("Please input keyword")
-    else:
-        flash("Keyword: "+ keyword + " SearchBy: "+ searchBy+" 类型：" +courseType)
-        result = []
-        if courseType == 'current': 
-            if searchBy == 'Code': #checked
-                result.append(Course.searchcurCoursebyCode(keyword))  
-            elif searchBy == 'name':
-                for i in Course.searchcurCoursebyName(keyword):
-                    result.append(i)
-        elif courseType == 'pre':
-            if searchBy =='Code':
-                for i in Course_preCourse.searchPreCoursesByCode(keyword):
-                    result.append(i)
-            elif searchBy == 'name':
-                for i in Course_preCourse.searchPreCoursesByName(keyword):
-                    result.append(i)
-        elif courseType == 'after':
-            if searchBy =='Code':
-                for i in Course_preCourse.searchAftCoursesByCode(keyword):
-                    result.append(i)
-            elif searchBy == 'name':
-                for i in Course_preCourse.searchAftCoursesByName(keyword):
-                    result.append(i)
-        print(result)
-        if result != [None]:
-            for i in result:  
-                flash("Search "+courseType +" course by content result: keyword: "+ keyword + " CourseName: "+ str(i.courseName) + "CourseID"+ str(i.course_id) )        
+    result_list = False
+    if request.method == "POST":
+        search_Form = Search_course()
+        keyword = search_Form.keyword.data
+        searchBy = search_Form.searchBy.data
+        courseType = search_Form.courseType.data
+        if not keyword:
+            flash("Please input keyword")
         else:
-            flash("there is no searched result")
-        
-    return render_template('designer/searchCourse.html', title='search course', header='search course')
+            result = []
+            if courseType == 'current':
+                if searchBy == 'Code': #checked
+                    result = Course.query.filter_by(courseCode=keyword).all()
+
+
+                elif searchBy == 'name':
+                    result = Course.query.filter_by(courseName=keyword).all()
+
+            elif courseType == 'pre':
+                if searchBy =='Code':
+                    course = Course.query.filter_by(courseCode=keyword).first()
+                    course_precourse = Course_preCourse.query.filter_by(course_id=course.course_id).all()
+                    for i in course_precourse:
+                        result.append(i.pre_course)
+
+                    # precourses = course.pre_course
+                    # print(precourses)
+                    # result = precourses
+                    # for i in Course_preCourse.searchPreCoursesByCode(keyword):
+                    #     result.append(i)
+                elif searchBy == 'name':
+                    course = Course.query.filter_by(courseName=keyword).first()
+                    course_precourse = Course_preCourse.query.filter_by(course_id=course.course_id).all()
+                    for i in course_precourse:
+                        result.append(i.pre_course)
+            elif courseType == 'after':
+                if searchBy =='Code':
+                    course = Course.query.filter_by(courseCode=keyword).first()
+                    course_precourse = Course_preCourse.query.filter_by(preCourse_id=course.course_id).all()
+                    for i in course_precourse:
+                        result.append(i.father_course)
+                    # for i in Course_preCourse.searchAftCoursesByCode(keyword):
+                    #     result.append(i)
+                elif searchBy == 'name':
+                    course = Course.query.filter_by(courseName=keyword).first()
+                    course_precourse = Course_preCourse.query.filter_by(preCourse_id=course.course_id).all()
+                    for i in course_precourse:
+                        result.append(i.father_course)
+                    # for i in Course_preCourse.searchAftCoursesByName(keyword):
+                    #     result.append(i)
+            print(result)
+            if result != []:
+                result_list = True
+                return render_template('designer/searchCourse.html', title='search course', header='search course', result_list = result_list, result = result)
+            else:
+                flash("there is no searched result")
+    return render_template('designer/searchCourse.html', title='search course', header='search course', result_list = result_list, result = Null)
 
 
 
