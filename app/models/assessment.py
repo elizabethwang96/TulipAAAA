@@ -42,6 +42,7 @@ class Assessment_CILO(Base):
     assessment_id = Column(Integer, ForeignKey('assessment.assessment_id'), nullable=False)
     cilo_id = Column(Integer, ForeignKey('cilo.cilo_id'), nullable=False)
     percentage = Column(Integer, primary_key=False, nullable=False)
+    numOfCilos = Column(Integer, primary_key=False, nullable=False)
 
     @declared_attr
     def assessment(cls):
@@ -51,11 +52,12 @@ class Assessment_CILO(Base):
     def cilo(cls):
         return relationship("CILO", backref="assessment_cilo")
 
-    def __init__(self, assessment_id, cilo_id, percentage):
+    def __init__(self, assessment_id, cilo_id, percentage, numOfCilos):
         super(Assessment_CILO, self).__init__()
         self.assessment_id = assessment_id
         self.cilo_id = cilo_id
         self.percentage = percentage
+        self.numOfCilos = numOfCilos
 
 #
 # # class Course_Assessment(Base):
