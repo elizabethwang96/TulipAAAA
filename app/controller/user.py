@@ -1,4 +1,3 @@
-from comtypes._comobject import winerror
 from flask.helpers import url_for
 import flask_sqlalchemy
 from sqlalchemy.sql.elements import False_
@@ -27,7 +26,7 @@ userBP = Blueprint('/',__name__)
 @userBP.route('/',methods=['GET','POST'])
 def login():
 
-     #
+
      # assessment1 = Assessment('quiz', 1)
      # assessment2 = Assessment('project', 1)
      # db.session.add(assessment1)
@@ -75,21 +74,9 @@ def login():
      #      print('asdkjhaskdjhadk')
      #      print( GradeRepport.query.filter(and_(GradeRepport.stu_id == student.stu_id, GradeRepport.assessment_id == i.assessment_id)).first())
      #      print('asdkjhaskdjhadk')
-     #      cilo1grade += GradeRepport.query.filter_by(and_(stu_id=student.stu_id, assessment_id = i.asessment_id)).first().grade * 1/(Assessment_CILO.query.filter_by(assessment_id = i.asessment_id).first().numOfCilos)
+     #      cilo1grade += (GradeRepport.query.filter_by(and_(stu_id=student.stu_id, assessment_id = i.asessment_id)).first().grade * 1/(ssessment_CILO.query.filter_by(and_(assessment_id = i.asessment_id)).first().numOfCilo))
      #      print(cilo1grade)
-     # for i in assessment_cilo2:
-     #      print('asdkjhaskdjhadk')
-     #      print( GradeRepport.query.filter(and_(GradeRepport.stu_id == student.stu_id, GradeRepport.assessment_id == i.assessment_id)).first())
-     #      print('asdkjhaskdjhadk')
-     #      cilo2grade += GradeRepport.query.filter_by(and_(stu_id=student.stu_id, assessment_id = i.asessment_id)).first().grade * 1/(Assessment_CILO.query.filter_by(assessment_id = i.asessment_id)).first().numOfCilos)
-     #      print(cilo2grade)
-     # for i in assessment_cilo3:
-     #      print('asdkjhaskdjhadk')
-     #      print( GradeRepport.query.filter(and_(GradeRepport.stu_id == student.stu_id, GradeRepport.assessment_id == i.assessment_id)).first())
-     #      print('asdkjhaskdjhadk')
-     #      cilo3grade += GradeRepport.query.filter_by(and_(stu_id=student.stu_id, assessment_id = i.asessment_id)).first().grade * 1/Assessment_CILO.query.filter_by(and_(stu_id=student.stu_id, assessment_id = i.asessment_id)).first().numOfCilo
-     #      print(cilo3grade)
-     # # for i in assessment_cilo_list:
+     # for i in assessment_cilo_list:
      #      print(i.cilo)
      #      cilonum = i.cilo.ciloNumber
      #      percentage = i.percentage

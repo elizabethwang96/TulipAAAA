@@ -161,6 +161,8 @@
             $("#delCILOs").hide();
         });
     });
+
+
     $("#precilo1_status").change(function(){
         var val = $('input:radio[name="add_precilo1_status"]:checked').val();
         if(val == 1){
@@ -216,7 +218,6 @@
         $("#cilo_haha").show();
 
         var val2 = select_value;
-        {#var val2 = $('input:radio[id="courses"]:checked').val();#}
         var sum = $("#cilos_sum").html();
 
         for (var i=1; i<=sum+1; i++)

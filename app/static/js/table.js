@@ -23,10 +23,13 @@ $(function () {
         var data = getData();
         //  JSON.stringify(localStorage.tableList);
         localStorage.tableList = JSON.stringify(data);
+
         console.log(data);
+        var courseID = document.getElementById('save').value;
+        console.log(courseID);
 
         $.ajax({
-            url: "/designer/createAssess",
+            url: "/designer/"+courseID+"/createAssess",
             type: "POST",
             data: JSON.stringify(data),
             contentType: 'application/json; charset=UTF-8',

@@ -15,10 +15,10 @@ class Assessment(Base):
     def course(cls):
         return relationship('Course', backref='assessment')
 
-    def __init__(self, type):
+    def __init__(self, type, course_id):
         super(Assessment,self).__init__()
         self.type = type
-        # self.course_id = course_id
+        self.course_id = course_id
 
     def jsonstr(self):
 
@@ -34,6 +34,12 @@ class Assessment(Base):
 
     def __str__(self):
         return '<assessment %r >' % self.assessment_id
+
+    def getLastAssesssmentId():
+        lastAssessment = Assessment.query.order_by(Assessment.assessment_id.desc()).first()
+        lastAssessmentID = lastAssessment.assessment_id
+        return lastAssessmentID
+
 
 @declarative_mixin
 class Assessment_CILO(Base):

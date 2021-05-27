@@ -1,0 +1,152 @@
+{% extends 'designer/home.html' %}
+{% block initial %}
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block header %}
+    <h1>{% block title %}Create Assessment{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post" id="submitForm">
+        <label>Welcome back! Course designer</label>
+<!--         <div class="card">-->
+
+<!--                    <div class="card-body md-3">-->
+<!--{#    =========================================================================================================#}-->
+<!--                        <h6>Assessment:</h6>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <p>Title:</p>-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <p>Percentage:</p>-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <p>Assessment CILO selection:</p>-->
+<!--                                <select class="form-control" onchange="">-->
+<!--                                        <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>-->
+<!--                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                        <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+
+<!--                                </select>-->
+<!--                            </div>-->
+
+<!--                            <hr style="margin-top: 20px;">-->
+
+<!--                        </div>-->
+<!--                        {#    =========for loop for adding================================================================================================#}-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <select class="form-control" onchange="">-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+
+<!--                                </select>-->
+<!--                            </div>-->
+
+<!--                            <hr style="margin-top: 20px;">-->
+
+<!--                        </div>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <select class="form-control" onchange="">-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+
+<!--                                </select>-->
+<!--                            </div>-->
+
+<!--                            <hr style="margin-top: 20px;">-->
+
+<!--                        </div>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <input class="form-control" placeholder="Textarea">-->
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-4">-->
+<!--                                <select class="form-control" onchange="">-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" selected>WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+<!--                                    <option id="courses"  name='courses' value="WYHDKEAI" >WYHDKEAI </option>-->
+
+<!--                                </select>-->
+<!--                            </div>-->
+
+<!--                            <hr style="margin-top: 20px;">-->
+
+<!--                        </div>-->
+<!--                        {#    =========for loop for adding================================================================================================#}-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-3">-->
+<!--                                <button id="" class="btn btn-primary" name="" type="button"-->
+<!--                                        value="ADD sb tzm">Add Assessment</button>-->
+<!--                            </div>-->
+
+<!--                            <div class="col-sm-3">-->
+<!--                                <button id="" class="btn btn-danger" name="" type="button"-->
+<!--                                        value="DELETE sb tzm">Delete Assessment</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                Card Assessment-->
+        <table class="table table-bordered table-hover">
+            <tr class="info">
+                <td>Evaluation Method</td>
+                <td>Percentage</td>
+                <td>CILOs</td>
+
+                <td>Operation</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="danger"><button id='add' type='button' class="btn btn-primary btn-sm">ADD</button></td>
+            </tr>
+        </table>
+        <button id="save" type="button" value="{{courseID}}"/>Save</button>
+        <div></div>
+    </form>
+{% endblock %}
+{% block script %}
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/table.js"></script>
+{% endblock %}
