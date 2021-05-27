@@ -135,11 +135,11 @@ def login():
                if account[0] == 's':
                     session['userType'] = 'student'
                     print('this is student')
-                    logState = Student.checkPasssword(account, password)
+                    logState = User.checkPasssword(account, password)
                elif account[0] == 'l':
                     session['userType'] = 'lecturer'
                     print('this is lecturer')
-                    logState = Lecturer.checkPasssword(account, password)
+                    logState = User.checkPasssword(account, password)
                elif account[0] == 'c':
                     session['userType'] = 'designer'
                     print('this is designer')

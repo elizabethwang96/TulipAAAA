@@ -29,53 +29,19 @@ def createCourse():
     courses = Course.query.all()
     programmes = Programme.query.all()
     cilos = CILO.query.all()
-
     cilos_sum = len(cilos)
-
-    #
-    # addCILOs = CreateCourse_AddCILOs()
-    # delCILOS = CreateCourse_DELETECILOs()
     form = CreateCourse_SubmitForm()
-    # test = request.form.getlist('type')
-
 
 
     select_precourse_id = request.form.get('select_precourse_id')
     pre_cilos_for_cilo1 = request.form.getlist('pre_cilos')
     add_precilo1_status = request.form.get('add_precilo1_status')
-    # for i in pre_cilos_for_cilo1:
-    #     print(i)
-    #     cilo = CILO.query.filter_by(cilo_id=i).first()
-    #     print(cilo.cilo_id)
-
-
-
-    # flash("courseName:"+str(form.courseName.data)+ " code: " + str(form.code.data) + " academic year: " + str(form.academicYear.data) + " Programme: " + str(form.programme.data) + " Type: "+ str(form.type.data))
-    # flash("CILO1: " + str(form.CILO1.data) + " CILO2: " + str(form.CILO2.data) + " CILO3: " + str(form.CILO3.data))
-
-    # if CILOsNum < 2 or CILOsNum > 3:
-    #     return render_template('404.html')
-    #
-    # #CILO 操作
-    # if addCILOs.addCILOs.data:
-    #     if CILOsNum + 1 > 3:
-    #         flash("Sorry, the max CILOs number is 3")
-    #     else:
-    #         CILOsNum = CILOsNum + 1
-    #         return redirect(CILOsNum)
-    # if delCILOS.delCILOs.data:
-    #     if CILOsNum == 2:
-    #         flash("Sorry, the min CILOs number is 2")
-    #     else:
-    #         CILOsNum = CILOsNum - 1
-    #         return redirect(CILOsNum)
 
 
     if form.courseName.data:
-        # print('start submission')
-        # print("courseName:"+str(form.courseName.data)+ " code: " + str(form.code.data) + " academic year: null" + " Programme: " + str(form.programme.data) + " Type: "+ str(form.type.data) +"CILO1: " + str(form.CILO1.data) + " CILO2: " + str(form.CILO2.data) + " CILO3: " + str(form.CILO3.data))
 
         # submit开使
+
         cilo_start_id = Course.createCourse(form.courseName.data, form.code.data, form.type.data, 1231, form.programmes.data)
         numOfcurCILOcreated = CILO.createCILOs(str(form.CILO1.data), str(form.CILO2.data), str(form.CILO3.data),Course.getLastCourseId())
 
@@ -89,8 +55,7 @@ def createCourse():
             db.session.commit()
 
         session['courseID'] = Course.getLastCourseId()
-        # return render_template('designer/createCourse.html', title='create course', header='create course')
-        return redirect(str(session.get('userType'))+"/"+str(session.get('courseID'))+"/createAssess")
+        return redirect(str(session.get('courseID'))+"/createAssess")
 
     return render_template('designer/createCourse.html', title='create course', header='create course', courses=courses, programmes=programmes, cilos_sum=cilos_sum)
 
@@ -138,8 +103,8 @@ def createAssess(courseID):
                 for i in range(len(data)):
                     print('ready to submit')
                     cilos = data[i]['cilo']
-                    output = cilos.split(",")
                     percentage  = int(data[i]['percent'])
+                    output = cilos.split(",")
                     list = [0 for x in range(0,len(output))]
                     k = 0
                     for i in output:
@@ -151,17 +116,31 @@ def createAssess(courseID):
                         print(Assessment.getLastAssesssmentId())
                         db.session.add(Assessment_CILO(start_assessement_id, start_cilo_id+i-1, percentage/len(list), 1))
                     start_assessement_id +=1
-                    db.session.commit()
-                    # assessment_id = Assessment.query.filter_by(type=data[i]['method']).first().assessment_id
-                    # cilo_id = CILO.query.filter(
-                    #     and_(course_id=session.get('courseID'), ciloNumber=data[i]['cilo'])).first().cilo_id
-                    # db.session.add(Assessment_CILO(str(assessment_id), str(cilo_id), str(data[i]['percent'])))
                 db.session.commit()
                 print(data)
+                print('fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
 
-        return render_template('designer/createAssessment.html', title='create assessment', header='create assessment', courseID= courseID, cilos=cilos)
+
+        print('fasdflskajfhlkas')
+        # return render_template('designer/courseCreateSuccessfully.html')
+        url = str(courseID)+'/courseMain'
+
+        return redirect(url)
+        # render_template('designer/createAssessment.html', title='create assessment', header='create assessment', courseID= courseID, cilos = cilos)
 
     return render_template('designer/createAssessment.html', title='create assessment', header='create assessment', courseID= courseID, cilos = cilos)
+
+
+@designerBP.route('/<int:courseID>/courseMain',methods=['GET','POST'])
+def CourseMain(courseID):
+    course = Course.query.filter_by(course_id = courseID)
+    if request.method == 'POST':
+        print('douzheliasldhajsdhak')
+
+        return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
+    print('asdaksjdhkajhmeishenme')
+    return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
+
 
 
 @designerBP.route('/department',methods=['GET','POST'])
@@ -248,7 +227,7 @@ def searchCourse():
             result = []
             if courseType == 'current':
                 if searchBy == 'Code': #checked
-                    result = Course.query.filter_by(courseCode=keyword).all()
+                    result.append(Course.query.filter_by(courseCode=keyword).first())
 
 
                 elif searchBy == 'name':
@@ -262,7 +241,7 @@ def searchCourse():
                         result.append(i.pre_course)
 
                     # precourses = course.pre_course
-                    # print(precourses)
+                    # print(precourses)3
                     # result = precourses
                     # for i in Course_preCourse.searchPreCoursesByCode(keyword):
                     #     result.append(i)
@@ -292,7 +271,7 @@ def searchCourse():
                 return render_template('designer/searchCourse.html', title='search course', header='search course', result_list = result_list, result = result)
             else:
                 flash("there is no searched result")
-    return render_template('designer/searchCourse.html', title='search course', header='search course', result_list = result_list, result = Null)
+    return render_template('designer/searchCourse.html', title='search course', header='search course', result_list = result_list, result = null)
 
 
 
@@ -320,10 +299,6 @@ def searchCILO():
     return render_template('designer/searchCILO.html', title='search CILO', header='search CILO')
 
 
-
-@designerBP.route('/courseMain',methods=['GET','POST'])
-def CourseMain():
-    return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page')
 
 
 

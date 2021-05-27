@@ -35,10 +35,12 @@ $(function () {
             contentType: 'application/json; charset=UTF-8',
             success: function (msg) {
                 // alert("save success")
-            }
+            },
+
         })
 
         add();
+        // window.location = "/designer/"+courseID+"/courseMain";
     });
 
     //增加行方法

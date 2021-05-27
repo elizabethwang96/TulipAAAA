@@ -67,34 +67,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% if result|length > 1 %}
-                    {% for i in result %}
-                        <tr>
-                            <td>{{i.courseName}}</td>
-                            <td>{{i.courseType}}</td>
-                            <td>{{i.academicYear}}</td>
-                            <td>{{i.programme.programmeName}}</td>
-                            <td>
-                                <a  href="\designer\courseMain\course_id={{i.course_id}}">
-                                    Go to course
-                                </a>
-                            </td>
-                        </tr>
-                    {%endfor%}
-                {% else %}
+                {% for i in result %}
                     <tr>
-                        <td>{{result.courseName}}</td>
-                        <td>{{result.courseType}}</td>
-                        <td>{{result.academicYear}}</td>
-                        <td>{{result.programme.programmeName}}</td>
+                        <td>{{i.courseName}}</td>
+                        <td>{{i.courseType}}</td>
+                        <td>{{i.academicYear}}</td>
+                        <td>{{i.programme.programmeName}}</td>
                         <td>
-                            <a  href="\designer\courseMain\course_id={{result.course_id}}">
+                            <a  href="\designer\courseMain\course_id={{i.course_id}}">
                                 Go to course
                             </a>
                         </td>
                     </tr>
+                {%endfor%}
 
-                {% endif %}
                 </tbody>
             </table>
 
