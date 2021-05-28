@@ -111,7 +111,7 @@ class CILO(Base):
             return CILOObject
         else:
             print('there is no corresponding cilo')
-        #return CILOObject
+        return CILOObject
 
     def searchCILObyContent(searchContent):
         #cls.query.filter(类名.属性名.like(‘%值%’))	like模糊查询

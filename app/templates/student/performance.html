@@ -1,19 +1,66 @@
 {% extends 'student/home.html' %}
 
+
 {% block header %}
-<h1>{% block title %}Show Performance{% endblock %}</h1>
+    <h1>{% block title %}Performance{% endblock %}</h1>
 {% endblock %}
 
 
 {% block content %}
-<div class = "Cards">
-  <p>Your performance in this course is:</p>
+    <div class = "Cards">
+        <p>Student Performance</p>
 
-  <!---------------------------------------->
-  <!--------display performance here-------->
-  <!---------------------------------------->
-
-  <br>
-  <a href="\student\courseMain"><button type="button" class="btn btn-primary mb-2">Back</button></a>
-</div>
+        <!---------------------------------------->
+        <!--------Display visualization here------>
+        <!---------------------------------------->
+        <div class="col-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Polar Area Chart</h5>
+                    <h6 class="card-subtitle text-muted">Your performance on each CILO</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="chartjs-polar-area"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="\student\courseMain"><button type="button" class="btn btn-primary mb-2">Back</button></a>
+    </div>
 {% endblock %}
+{% block script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Polar Area chart
+            new Chart(document.getElementById("chartjs-polar-area"), {
+                type: "polarArea",
+                data: {
+                    labels: [
+                        {% for cilo in cilo_list%}
+                            "{{ cilo }}",
+                            {% endfor %}
+                    ],
+                    datasets: [{
+                        label: "Model S",
+                        data: [
+                            {% for cilo in result_list%}
+                            "{{ cilo }}",
+                            {% endfor %}
+                        ],
+                        backgroundColor: [
+                            window.theme.primary,
+                            "#87ceeb",
+                            "#b0c4de"
+                        ]
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+

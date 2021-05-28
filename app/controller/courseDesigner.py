@@ -9,7 +9,8 @@ from app.models.gradeReport import GradeRepport
 from flask_bootstrap import Bootstrap
 from app.models.base import db
 from sqlalchemy import or_,and_,all_,any_
-from app.forms import  CreateCourse_SubmitForm, Search_CILO, Search_course
+from app.forms import CreateCourse_SubmitForm, Search_course
+from app.forms.course import Search_CILO
 from app.models.course import Course, Course_preCourse
 from app.models.assessment import Assessment, Assessment_CILO
 import os
@@ -119,6 +120,9 @@ def createAssess(courseID):
                 db.session.commit()
                 print(data)
                 print('fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
+                url = '/courseMain/'+str(courseID)
+
+                return redirect('/designer/'+str(courseID)+'/courseMain')
 
 
         print('fasdflskajfhlkas')
@@ -131,17 +135,22 @@ def createAssess(courseID):
     return render_template('designer/createAssessment.html', title='create assessment', header='create assessment', courseID= courseID, cilos = cilos)
 
 
-@designerBP.route('/<int:courseID>/courseMain',methods=['GET','POST'])
-def CourseMain(courseID):
-    course = Course.query.filter_by(course_id = courseID)
-    if request.method == 'POST':
-        print('douzheliasldhajsdhak')
+# @designerBP.route('/<int:courseID>/courseMain',methods=['GET','POST'])
+# def CourseMain(courseID):
+#     course = Course.query.filter_by(course_id = courseID)
+#     if request.method == 'POST':
+#         print('douzheliasldhajsdhak')
 
-        return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
-    print('asdaksjdhkajhmeishenme')
-    return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
+#         return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
+#     print('asdaksjdhkajhmeishenme')
+#     return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page',course = course)
 
-
+@designerBP.route('/courseMain/course_id=<int:course_id>',methods=['GET','POST'])
+def CourseMain(course_id):
+    courseInfo = Course.query.filter(Course.course_id == course_id).first()
+    CILOs = CILO.query.filter(CILO.course_id == course_id).all()
+    print(len(CILOs))
+    return render_template('designer/courseMain.html',title='Student Course Main Page',header='Student Course Main Page', courseInfo = courseInfo, CILOs = CILOs)
 
 @designerBP.route('/department',methods=['GET','POST'])
 def department():
@@ -281,21 +290,21 @@ def searchCILO():
     keyword = search_Form.keyword.data
     searchBy = search_Form.searchType.data
     result = []
+
     if  not all([keyword]):
         flash("Please input keyword")
     else:
-        flash("Keyword: "+ keyword + " SearchBy: "+ searchBy)
         if searchBy == 'id':
-            result = CILO.searchCILObyID(keyword)
+            result.append(CILO.query.filter(CILO.cilo_id == keyword).first())
+            return render_template('designer/searchCILO.html', title='search CILO', header='search CILO', result = result)
         else:
             result = []
-            for i in CILO.searchCILObyContent(str(keyword)):
+            for i in CILO.query.filter(CILO.ciloContent.contains(keyword)).all():
                 result.append(i)
-        if result != [None]: 
-            for i in result: 
-                flash("Search CILO by content result: CILOID: "+ keyword + " CILONumber: "+ str(i.ciloNumber) + "CILOContent"+ i.ciloContent )        
-        else:
-            flash("there is no searched result")
+            if not result:
+                flash("No matched CILO")
+            return render_template('designer/searchCILO.html', title='search CILO', header='search CILO', result = result)
+
     return render_template('designer/searchCILO.html', title='search CILO', header='search CILO')
 
 

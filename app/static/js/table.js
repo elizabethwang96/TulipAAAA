@@ -38,7 +38,9 @@ $(function () {
             },
 
         })
-
+        var url = '/designer/courseMain/course_id='+courseID;
+        
+        window.location.href = url 
         add();
         // window.location = "/designer/"+courseID+"/courseMain";
     });

@@ -52,4 +52,50 @@
     </div>
 </div>
 {% endfor %}
+{% if result %}
+
+
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Result</h5>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>CILO Num</th>
+                    <th>CILO Content</th>
+
+                    <th>Link</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in result %}
+                    <tr>
+                        <td>{{i.ciloNumber}}</td>
+                        <td>{{i.ciloContent}}</td>
+                        <td>
+                            <a  href="\designer\courseMain\course_id={{i.course_id}}">
+                                Go to course
+                            </a>
+                        </td>
+                    </tr>
+                {%endfor%}
+
+                </tbody>
+            </table>
+
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{i}}</li>
+            </ul>
+
+        </div>
+
+
+
+    {%endif%}
+
+
+
 {% endblock %}
