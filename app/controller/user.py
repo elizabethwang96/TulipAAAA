@@ -25,21 +25,21 @@ userBP = Blueprint('/',__name__)
 
 @userBP.route('/',methods=['GET','POST'])
 def login():
-     # diction_course = {}
-     # courses = Programme.query.filter_by(programme_id=2).first().course
-     # print(courses)
-     # for i in courses:
-     #      diction_course[i.course_id] = i.courseName
-     #
-     #
-     #      if i.pre_course != []:
-     #           print('course '+ i.courseName +' precourse is ')
-     #           for item in i.pre_course:
-     #                diction_course[i.course_id] = i.courseName
-     #                print(Course.query.filter_by(course_id =item.course_id).first().courseName)
-     #      else:
-     #           print('course '+ i.courseName +' has no precourse')
-     # print(diction_course)
+     diction_course = {}
+     courses = Programme.query.filter_by(programme_id=2).first().course
+     print(courses)
+     for i in courses:
+          diction_course[i.course_id] = i.courseName
+
+
+          if i.pre_course != []:
+               print('course '+ i.courseName +' precourse is ')
+               for item in i.pre_course:
+                    diction_course[i.course_id] = i.courseName
+                    print(Course.query.filter_by(course_id =item.course_id).first().courseName)
+          else:
+               print('course '+ i.courseName +' has no precourse')
+     print(diction_course)
      # assessment1 = Assessment('quiz', 1)
      # assessment2 = Assessment('project', 1)
      # db.session.add(assessment1)
