@@ -29,7 +29,7 @@ class Course_preCourse(Base):
         return '<Course_preCourse %r >' % self.course_id
 
     def __repr__(self):
-        return '<Course_preCourse %r %r>' % self.course_id
+        return '<Course_preCourse %r>' % self.course_id
 
 
 
@@ -42,8 +42,7 @@ class Course_preCourse(Base):
         return jsondata
 
 
-    def __repr__(self):
-        return self.course_preCourse_id
+
 
 
 @declarative_mixin

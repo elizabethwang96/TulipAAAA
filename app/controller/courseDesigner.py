@@ -155,7 +155,9 @@ def CourseMain(course_id):
 @designerBP.route('/department',methods=['GET','POST'])
 def department():
     if request.method == 'GET':
-        return render_template('designer/department.html',title='department',header='department')
+        courses = Programme.query.filter_by(programme_id=2).first().course
+
+        return render_template('designer/department.html',title='department',header='department', courses= courses)
 
 
 

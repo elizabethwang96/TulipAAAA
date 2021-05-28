@@ -7,6 +7,148 @@
 {% block content %}
   <form method="post">
     <label>Welcome back! Course designer</label>
+
 {#    <label for="password">Password</label>#}
   </form>
+
+    <div id="mainDepart" style="width: 1920px;height:1080px;"></div>
+
+{#    <div class="col-12 col-lg-6">#}
+{##}
+{#    <div class="card-body">#}
+{#        <div class="chart">#}
+{#            <canvas id="mainDepart"></canvas>#}
+{#        </div>#}
+{#    </div>#}
+{#    </div>#}
+{% endblock %}
+
+
+
+{% block script %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        {#// 基于准备好的dom，初始化echarts实例#}
+        {#import * as echarts from 'echarts';#}
+
+        var chartDom = document.getElementById('mainDepart');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+
+        option = {
+            series: {
+                type: 'sankey',
+                layout: 'none',
+                emphasis: {
+                    focus: 'adjacency'
+                },
+
+                data: [
+
+                    {% for i in courses %}
+                        {name: "{{ i.courseName }}"},
+                    {% endfor %}
+                ],
+                links: [
+                    {% for i in courses%}
+                        {% if i.pre_course != []  %}
+                            {% for item in i.pre_course %}
+                                {
+                                    source:"{{ Course.query.filter_by(course_id =item.course_id).first().courseName }}",
+                                    target:"{{ i.courseName }}",
+                                    value:1
+
+                                },
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                    ]
+            }
+        };
+
+        option && myChart.setOption(option);
+
+
+        {#var myChart = echarts.init(document.getElementById('mainDepart'), 'dark'); // dark 可尝试修改为 light#}
+        {##}
+        {#myChart.setOption({#}
+        {#    series : [#}
+        {#        {#}
+        {#            name: '访问来源',#}
+        {#            type: 'pie',    // 设置图表类型为饼图#}
+        {#            radius: '55%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。#}
+        {#            data:[          // 数据数组，name 为数据项名称，value 为数据项值#}
+        {#                {value:235, name:'视频广告'},#}
+        {#                {value:274, name:'联盟广告'},#}
+        {#                {value:310, name:'邮件营销'},#}
+        {#                {value:335, name:'直接访问'},#}
+        {#                {value:400, name:'搜索引擎'}#}
+        {#            ]#}
+        {#        }#}
+        {#    ]#}
+    </script>
+
+    {#    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>#}
+{#    <script type="text/javascript">#}
+{#        document.addEventListener("DOMContentLoaded", function() {#}
+{#        import * as echarts from 'echarts';#}
+{##}
+{#        var chartDom = document.getElementById('mainDepart');#}
+{#        var myChart = echarts.init(chartDom);#}
+{#        var option;#}
+{##}
+{#        option = {#}
+{#            tooltip: {#}
+{#                trigger: 'item',#}
+{#                triggerOn: 'mousemove'#}
+{#            },#}
+{#            animation: false,#}
+{#            series: [#}
+{#                {#}
+{#                    type: 'sankey',#}
+{#                    bottom: '10%',#}
+{#                    emphasis: {#}
+{#                        focus: 'adjacency'#}
+{#                    },#}
+{#                    data: [#}
+{#                        {name: 'a'},#}
+{#                        {name: 'b'},#}
+{#                        {name: 'a1'},#}
+{#                        {name: 'b1'},#}
+{#                        {name: 'c'},#}
+{#                        {name: 'e'}#}
+{#                    ],#}
+{#                    links: [#}
+{#                        {source: 'a', target: 'a1', value: 5},#}
+{#                        {source: 'e', target: 'b', value: 3},#}
+{#                        {source: 'a', target: 'b1', value: 3},#}
+{#                        {source: 'b1', target: 'a1', value: 1},#}
+{#                        {source: 'b1', target: 'c', value: 2},#}
+{#                        {source: 'b', target: 'c', value: 1}#}
+{#                    ],#}
+{#                    orient: 'vertical',#}
+{#                    label: {#}
+{#                        position: 'top'#}
+{#                    },#}
+{#                    lineStyle: {#}
+{#                        color: 'source',#}
+{#                        curveness: 0.5#}
+{#                    }#}
+{#                }#}
+{#            ]#}
+{#        }#}
+{##}
+{#        option && myChart.setOption(option);#}
+{##}
+{#        });#}
+{##}
+{#    </script>#}
+
 {% endblock %}

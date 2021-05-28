@@ -2,28 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da3c47d6-1526-43a8-99a1-b684f8aa31ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Tulip2.0.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TulipAAAA.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/WorkshopIIIA.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/project_v1/v16/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/slnx.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/courseDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/courseDesigner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/student.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/student.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/CILOs.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/CILOs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/designer/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/designer/analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/designer/courseMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/designer/courseMain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/designer/searchCILO.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/designer/searchCILO.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/designer/visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/designer/visualization.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/student/performance.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/student/performance.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/student/visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/student/visualization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/course.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/course.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/designer/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/designer/department.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622118945489</updated>
       <workItem from="1622118946767" duration="6865000" />
+      <workItem from="1622202180213" duration="7413000" />
     </task>
     <servers />
   </component>
@@ -94,5 +78,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
